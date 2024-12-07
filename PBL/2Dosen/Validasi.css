@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    background-image: url('../Aset/Background\ landscape.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 289px;
+    background: rgba(30, 58, 138, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 34px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 24px;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.username {
+    color: white;
+    font-size: 1.1rem;
+    flex-grow: 1;
+}
+
+.collapse-arrow {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.menu-item {
+    height: 51px;
+    display: flex;
+    align-items: center;
+    gap: 20px;  /* Ruang antara ikon dan teks */
+    padding: 15px 20px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 8px;
+    color: #2D2669;
+    text-decoration: none;
+    font-weight: auto;
+    transition: all 0.3s ease;
+    justify-content: flex-start; /* Pastikan konten berada di kiri */
+    width: 240px;
+}
+
+.menu-icon {
+    width: 20px; /* Ukuran ikon */
+    height: 20px; /* Ukuran ikon */
+    fill: #2D2669; /* Warna ikon */
+    flex-shrink: 0; /* Menghindari ikon mengecil ketika ukuran kontainer berubah */
+    margin-right: 10px; /* Memberikan jarak antara ikon dan teks */
+}
+
+.menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.box1{
+    width: 370px;
+    height: 1317px;
+    background-color: white;
+}
+
+.box1{
+    width:1300px;
+    height: 53px;
+    background-color: #2D2669;
+    border-radius: 5px;
+    justify-items: center;
+    margin-left: 50px;
+    color: white;
+}
+
+.data {
+    display: flex; /* Mengaktifkan flexbox */
+    flex-direction: column; /* Menyusun elemen secara vertikal */
+    align-items: center; /* Menempatkan elemen di tengah horizontal */
+    width: 1300px; /* Lebar tetap sesuai kebutuhan */
+    height: 1774px; /* Tinggi tetap */
+    border-radius: 5px;
+    background-color: white; /* Warna latar belakang */
+    margin-left: 50px;
+}
+
+/* Gaya untuk semua bagian */
+/* Desain untuk bagian Lampiran */
+.Lampiran {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+    grid-template-rows: auto auto; /* 2 baris otomatis */
+    gap: 20px;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya untuk setiap file-upload */
+.file-upload {
+    display: flex;
+    flex-direction: column; /* Tata letak vertikal */
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer;
+}
+
+/* Hover effect untuk file-upload */
+.file-upload:hover {
+    transform: translateY(-3px); /* Geser elemen sedikit ke atas */
+    background-color: #e0e0e0; /* Ganti latar belakang menjadi abu-abu */
+}
+
+/* Label styling */
+.file-upload label {
+    font-size: 14px;
+    color: #333;
+    font-weight: normal;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    transition: color 0.3s;
+}
+
+/* Styling gambar */
+.file-upload img {
+    width: 90px; /* Ukuran gambar lebih kecil */
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    margin-bottom: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efek hover pada gambar */
+.file-upload:hover img {
+    transform: scale(1.1); /* Perbesar gambar sedikit */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Tambah bayangan */
+}
+
+/* Responsif: Satu kolom pada layar kecil */
+@media (max-width: 768px) {
+    .Lampiran {
+        grid-template-columns: 1fr; /* Menggunakan satu kolom pada layar kecil */
+    }
+}

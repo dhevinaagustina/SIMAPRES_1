@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    background-image: url(../Asset/Background\ landscape.png);
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background: rgba(30, 58, 138, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 34px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 24px;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.username {
+    color: white;
+    font-size: 1.1rem;
+    flex-grow: 1;
+}
+
+.collapse-arrow {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.menu-item {
+    height: 51px;
+    display: flex;
+    align-items: center;
+    gap: 20px;  /* Ruang antara ikon dan teks */
+    padding: 15px 20px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 8px;
+    color: #2D2669;
+    text-decoration: none;
+    font-weight: auto;
+    transition: all 0.3s ease;
+    justify-content: flex-start; /* Pastikan konten berada di kiri */
+    width: 240px;
+}
+
+.menu-icon {
+    width: 20px; /* Ukuran ikon */
+    height: 20px; /* Ukuran ikon */
+    fill: #2D2669; /* Warna ikon */
+    flex-shrink: 0; /* Menghindari ikon mengecil ketika ukuran kontainer berubah */
+    margin-right: 10px; /* Memberikan jarak antara ikon dan teks */
+}
+
+.menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    margin-left: 50px;
+}
+
+.box1{
+    width:1300px;
+    height: 53px;
+    background-color: #2D2669;
+    border-radius: 5px;
+}
+
+.data {
+    display: flex; /* Mengaktifkan flexbox */
+    flex-direction: column; /* Menyusun elemen secara vertikal */
+    align-items: center; /* Menempatkan elemen di tengah horizontal */
+    width: 1300px; /* Lebar tetap sesuai kebutuhan */
+    height: 1774px; /* Tinggi tetap */
+    border-radius: 5px;
+    background-color: white; /* Warna latar belakang */
+}
+
+.welcome-text {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    align-items: center; /* Menyelaraskan label dan input secara vertikal */
+    margin-bottom: 20px; /* Jarak antar setiap pasangan label dan input */
+    gap: 20px; /* Jarak antara label dan input */
+}
+
+label {
+    width: 260px; /* Memberikan lebar tetap untuk label agar rata */
+    text-align: left; /* Menyelaraskan teks label ke kanan */
+    color: #2D2669;
+    font-family: "Poppins-SemiBold", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+input {
+    margin-top: 10px;
+    background-color: #DDDDDD;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 660px; /* Atur lebar input sesuai kebutuhan */
+    box-sizing: border-box;
+}
+
+.file-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.file-item {
+    text-align: center;
+    width: 23%; /* Menyesuaikan jumlah kolom */
+}
+
+.file-upload img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+}
+
+.file-upload p {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.file-upload button {
+    background-color: #2D2669;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-upload button:hover {
+    background-color: #3d3578;
+}
+
+.table-section {
+    margin-top: 20px;
+    width: 1000px;
+}
+
+.table-section h2 {
+    background-color: #2D2669;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f5f5f5;
+}
+
+table select {
+    width: 90%;
+    padding: 5px;
+}
+
+/* input berkas */
+
+.file-item {
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  .file-item label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+  }
+
+  /* Container untuk upload file */
+  .file-upload {
+    border: 2px dashed #2D2669; /* Garis putus-putus */
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    position: relative;
+  }
+
+  /* Gambar placeholder di dalam container */
+  .file-upload img {
+    max-width: 100px;
+    margin-bottom: 10px;
+  }
+
+  .file-upload p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+  }
+
+  /* Tombol kustom untuk file input */
+  .file-upload .custom-file-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2D2669;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+  }
+
+  .file-upload .custom-file-button:hover {
+    background-color: #3e3198; /* Efek hover */
+    transform: translateY(-2px); /* Efek klik */
+  }
+
+  .file-upload .custom-file-button:active {
+    background-color: #251d52; /* Efek klik: warna lebih gelap */
+    transform: translateY(0); /* Kembali ke posisi semula */
+  }
+
+  .file-upload .custom-file-button::before {
+    content: '📁'; /* Ikon folder */
+    margin-right: 8px;
+  }
+  
+  /* Tampilkan nama file setelah dipilih */
+  .file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    font-style: italic;
+  }
+
+  #file-upload {
+    background-color: #251d52;
+    width: 120px;
+  }
+
+  

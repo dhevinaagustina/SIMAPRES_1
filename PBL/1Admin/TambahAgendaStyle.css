@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    background-image: url(../Asset/Background\ landscape.png);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background: rgba(30, 58, 138, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 24px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 24px;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.username {
+    color: white;
+    font-size: 1.1rem;
+    flex-grow: 1;
+}
+
+.collapse-arrow {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.menu-item {
+    height: 71px;
+    width: 232px;
+    display: flex;
+    align-items: center;
+    gap: 15px;  /* Ruang antara ikon dan teks */
+    padding: 15px 20px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 8px;
+    color: #2D2669;
+    text-decoration: none;
+    font-weight: auto;
+    transition: all 0.3s ease;
+}
+
+.menu-icon {
+    width: 20px; /* Ukuran ikon */
+    height: 20px; /* Ukuran ikon */
+    fill: #2D2669; /* Warna ikon */
+    flex-shrink: 0; /* Menghindari ikon mengecil ketika ukuran kontainer berubah */
+}
+
+
+.menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.main-content {
+    flex: 1;
+    padding: 40px;
+    margin-left: 50px;
+}
+
+.welcome-text {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#box{
+    width: 1300px;
+    height: 1042px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#box1{
+    width:1300px;
+    height: 53px;
+    background-color: #2D2669;
+    border-radius: 5px;
+}
+
+.competition-form{
+    padding-left: 40px;
+}
+
+input{
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.welcome-text{
+    color: #ffffff;
+    text-align: center;
+    font-family: "Poppins-Bold", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    position: relative;
+    width: 234px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+label[for="judul-lomba"],label[for="deskripsi-lomba"],label[for="url-lomba"],label[for="tanggal-mulai"] {
+    color: #2D2669;
+    text-align: left;
+    font-family: "Poppins-SemiBold", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    width: auto;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+label[for="tanggal-berakhir"] {
+    color: #2D2669;
+    text-align: left;
+    font-family: "Poppins-SemiBold", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    width: auto;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+label[for="foto-lomba"] {
+    color: #000000;
+    text-align: left;
+    font-family: "Poppins-SemiBold", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    width: auto;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#judul-lomba,#url-lomba{
+    width: 677px;
+    height: 50px;
+    
+    background-color: #DDDDDD;
+    position: relative;
+    overflow: visible;
+    border-radius: 5px;
+}
+
+.form-group1{
+    margin-top: 20px;
+    display: flex;
+}
+
+#tanggal-mulai,#tanggal-berakhir{
+    
+    width: 209px;
+    height: 50px;
+    margin-right: 70px;
+    background-color: #DDDDDD;
+}
+
+.form-sub1{
+    display: flex;
+    margin-right: 10px;
+}
+
+/* Gaya dasar untuk grup input */
+.form-group {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Label untuk tombol unggah */
+.custom-file-upload {
+    margin-top: 20px;
+    display: inline-block;
+    background-color: #2D2669;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Hover efek untuk tombol */
+.custom-file-upload:hover {
+    background-color: #4B3A94;
+    color: #ffffff;
+}
+
+/* Input file disembunyikan */
+input[type="file"] {
+    display: none;
+}
+
+/* Teks untuk nama file */
+.file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Gaya dasar untuk elemen form */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Label untuk elemen textarea */
+.form-group label {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2D2669;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Gaya untuk textarea */
+textarea {
+    width: 100%;
+    max-width: 600px;
+    height: 150px;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    resize: none; /* Mencegah perubahan ukuran */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya fokus */
+textarea:focus {
+    border-color: #4B3A94;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(75, 58, 148, 0.2);
+}
+
+/* Placeholder gaya */
+textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Gaya dasar untuk tombol */
+.btn-submit {
+    background-color: #2D2669; /* Warna utama tombol */
+    color: white; /* Warna teks */
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Efek hover */
+.btn-submit:hover {
+    background-color: #4B3A94; /* Warna yang lebih terang */
+    transform: translateY(-3px); /* Sedikit melayang */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bayangan lebih besar */
+}
+
+/* Efek aktif (klik) */
+.btn-submit:active {
+    transform: translateY(1px); /* Sedikit ditekan */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Animasi saat fokus dengan keyboard */
+.btn-submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(75, 58, 148, 0.4); /* Lingkaran fokus */
+}
+
+

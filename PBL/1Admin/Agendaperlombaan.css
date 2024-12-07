@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    background-image: url(Asset/Background\ landscape.png);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background: rgba(30, 58, 138, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 24px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 24px;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.username {
+    color: white;
+    font-size: 1.1rem;
+    flex-grow: 1;
+}
+
+.collapse-arrow {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.menu-item {
+    height: 71px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 8px;
+    color: #2D2669;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    
+}
+
+.menu-icon {
+    width: 20px; /* Atur lebar ikon */
+    height: 20px; /* Atur tinggi ikon */
+    fill: #2D2669; /* Atur warna ikon jika diperlukan */
+    flex-shrink: 0; /* Pastikan ikon tidak mengecil ketika container diperkecil */
+}
+
+
+.menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
