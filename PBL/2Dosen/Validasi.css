@@ -8,7 +8,7 @@
 body {
     min-height: 100vh;
     display: flex;
-    background-image: url('../Aset/Background\ landscape.png');
+    background-image: url('../Asset/Background\ landscape.png');
     background-size: cover;
     background-position: center;
 }
