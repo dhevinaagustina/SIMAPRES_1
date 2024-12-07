@@ -8,7 +8,7 @@
 body {
     min-height: 100vh;
     display: flex;
-    background-image: url('../Aset/Background\ landscape.png');
+    background-image: url('../Asset/Background\ landscape.png');
     background-size: cover;
     background-position: center;
 }
@@ -97,13 +97,14 @@ body {
 .data {
     display: flex; /* Mengaktifkan flexbox */
     flex-direction: column; /* Menyusun elemen secara vertikal */
-    align-items: center; /* Menempatkan elemen di tengah horizontal */
     width: 1300px; /* Lebar tetap sesuai kebutuhan */
     height: 1774px; /* Tinggi tetap */
     border-radius: 5px;
     background-color: white; /* Warna latar belakang */
     margin-left: 50px;
 }
+
+
 
 /* Gaya untuk semua bagian */
 /* Desain untuk bagian Lampiran */
