@@ -3,7 +3,7 @@ session_start();
 require 'konek.php';
 
 // Berikan parameter sesuai kebutuhan
-$conn = connectToDatabase("DESKTOP-EJT421I\DBMS2024", "PBL_DB");
+$conn = connectToDatabase("NXST-planet\DBMS2022", "PBL_DB"); //nimas nyoba punya dia
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
