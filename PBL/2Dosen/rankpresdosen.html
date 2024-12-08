@@ -55,6 +55,19 @@
             font-size: 1.5rem;
         }
 
+        #logout-button {
+            background: #FF4C4C; 
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            transition: background 0.3s ease;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+        }
+
         .menu-item {
             display: flex;
             align-items: center;
@@ -169,7 +182,6 @@
         <div class="user-profile">
             <div class="user-avatar"></div>
             <span class="username">Username</span>
-            <span class="collapse-arrow">≪</span>
         </div>
         
         <a href="dashboarddosen.html" class="menu-item">
@@ -187,7 +199,7 @@
             Validasi & Daftar Prestasi
         </a>
 
-        <a href="#" class="menu-item">
+        <a href="agendakompdosen.html" class="menu-item">
             <svg class="menu-icon" viewBox="0 0 24 24">
                 <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
                 <path d="M11 11h2v6h-2zm0-4h2v2h-2z"/>
@@ -202,6 +214,8 @@
             </svg>
             Peringkat Mahasiswa
         </a>
+
+        <a href="../0Loginpage/login.html" id="logout-button" class="menu-item hidden">Keluar</a>
     </div>
 
     <div class="main-content">
