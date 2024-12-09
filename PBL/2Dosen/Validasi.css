@@ -94,15 +94,70 @@ body {
     color: white;
 }
 
+/* Gaya Umum untuk Semua Konten dalam Data */
 .data {
-    display: flex; /* Mengaktifkan flexbox */
-    flex-direction: column; /* Menyusun elemen secara vertikal */
-    width: 1300px; /* Lebar tetap sesuai kebutuhan */
-    height: 1774px; /* Tinggi tetap */
+    display: flex;
+    flex-direction: column;
+    width: 1300px;
+    height: 1774px;
     border-radius: 5px;
-    background-color: white; /* Warna latar belakang */
+    background-color: white;
     margin-left: 50px;
+    padding: 30px; /* Memberikan sedikit padding agar lebih rapi */
+    font-family: 'Poppins', sans-serif; /* Menggunakan font yang lebih modern */
+    color: #333; /* Warna teks utama yang lebih lembut */
 }
+
+/* Gaya untuk Setiap Div di Dalam Data */
+.data div {
+    margin-bottom: 20px; /* Memberikan jarak antar elemen */
+}
+
+/* Gaya untuk Label */
+.data label {
+    font-size: 1rem; /* Ukuran font label yang lebih besar */
+    color: #2D2669; /* Warna yang konsisten dengan tema */
+    font-weight: 600; /* Menebalkan font label */
+    margin-bottom: 8px; /* Jarak antara label dan konten */
+    text-transform: capitalize; /* Menyusun label dalam format kapitalisasi */
+}
+
+/* Gaya untuk Konten (Nilai) */
+.data span {
+    font-size: 1.1rem; /* Ukuran font yang sedikit lebih besar agar lebih jelas */
+    color: #555; /* Warna yang sedikit lebih gelap untuk nilai */
+    font-weight: 400; /* Font normal agar tidak terlalu menonjol */
+    line-height: 1.6; /* Memberikan ruang antara teks untuk keterbacaan */
+}
+
+/* Gaya untuk Judul Kompetisi, Dosen Pembimbing, dan Anggota */
+.data h2, .data h3 {
+    font-size: 1.3rem;
+    color: #2D2669;
+    font-weight: 600;
+    margin-bottom: 15px; /* Memberikan jarak setelah judul */
+    text-transform: uppercase; /* Mengubah judul menjadi uppercase */
+    border-bottom: 2px solid #2D2669; /* Menambahkan garis bawah untuk judul */
+    padding-bottom: 5px; /* Memberikan ruang antara teks dan garis bawah */
+}
+
+/* Hover Effect untuk elemen span (konten) */
+.data span:hover {
+    color: #2D2669; /* Menambahkan efek hover pada konten */
+    cursor: pointer; /* Menunjukkan bahwa konten dapat di-interaksi */
+}
+
+/* Responsif untuk Tampilan Lebih Kecil */
+@media (max-width: 768px) {
+    .data {
+        width: 100%; /* Memastikan tampilan tetap lebar penuh di perangkat kecil */
+        padding: 20px; /* Mengurangi padding untuk perangkat kecil */
+    }
+    .data h2, .data h3 {
+        font-size: 1.1rem; /* Mengurangi ukuran judul untuk perangkat kecil */
+    }
+}
+
 
 
 
