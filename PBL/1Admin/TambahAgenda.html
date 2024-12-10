@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=8.0">
     <title>Pendataan Lomba</title>
     <link rel="stylesheet" type="text/css" href="TambahAgendaStyle.css">
+
     <script>
         // Fungsi untuk menandai menu yang aktif
     function setActiveMenu(menuId) {
@@ -15,6 +16,33 @@
         // Tambahkan kelas 'active' pada menu item yang dipilih
         document.getElementById(menuId).classList.add('active');
     }
+
+    function setActiveMenu(menuId) {
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => item.classList.remove('active'));
+        document.getElementById(menuId).classList.add('active');
+    }
+
+    
+
+    document.addEventListener("DOMContentLoaded", function () {
+            const fileInput = document.getElementById("file-upload");
+            const fileNameSpan = document.getElementById("file-name");
+
+            fileInput.addEventListener("change", function () {
+                const file = fileInput.files[0]; // File yang dipilih oleh pengguna
+
+                if (file) {
+                    // Tampilkan nama file
+                    fileNameSpan.textContent = file.name;
+                    fileNameSpan.style.color = "#2D2669"; // Warna file yang sudah dipilih
+                } else {
+                    // Kembali ke default jika tidak ada file
+                    fileNameSpan.textContent = "No file selected";
+                    fileNameSpan.style.color = "#555";
+                }
+            });
+        })
 </script>
 </head>
 <body>
@@ -63,57 +91,51 @@
             <div id="box1">
                 <h1 class="welcome-text">Pendataan Lomba</h1>
             </div>
-            <form class="competition-form">
+            <form class="competition-form" action="backend/submit_info.php" method="POST">
                 <!-- Judul Lomba -->
-
                 <div class="form-group2">
                     <div class="form"></div>
                     <div class="form-group">
                         <label for="judul-lomba">Judul Lomba :</label>
-                        <input type="text" id="judul-lomba" name="judul-lomba" placeholder="Masukkan Judul Lomba" required />
+                        <input type="text" id="judul-lomba" name="judul-lomba" placeholder="Masukkan Judul Lomba" required/>
                     </div>
-
+            
                     <div class="form-group">
                         <label for="url-lomba">URL Lomba :</label>
                         <input type="url" id="url-lomba" name="url-lomba" placeholder="Masukkan URL Lomba" required />
                     </div>
-        
+            
                     <div class="form-upload">
                         <label for="file-upload" class="custom-file-upload">
                             Upload Thumbnail
                         </label>
-                        <input type="file" id="file-upload" name="file-upload" accept="image/*" />
+                        <input type="file" id="file-upload" name="file-upload" accept="" style="display: none;" />
                         <span class="file-name" id="file-name">No file selected</span>
                     </div>
                 </div>
-               
-                <!-- URL Lomba -->
-               
-    
+            
                 <!-- Tanggal Mulai dan Berakhir -->
                 <div class="form-group1">
-                    <div><label for="tanggal-mulai">Tanggal Mulai :</label>
+                    <div>
+                        <label for="tanggal-mulai">Tanggal Mulai :</label>
                         <input type="date" id="tanggal-mulai" name="tanggal-mulai" required />
                     </div>
                     <div>
                         <label for="tanggal-berakhir">Tanggal Berakhir :</label>
-                    <input type="date" id="tanggal-berakhir" name="tanggal-berakhir" required />
+                        <input type="date" id="tanggal-berakhir" name="tanggal-berakhir" required />
                     </div>
-                    
                 </div>
-    
-                <!-- Foto Thumbnail Lomba -->
-
-    
+            
                 <!-- Deskripsi Lomba -->
                 <div class="form-group">
                     <label for="deskripsi-lomba">Deskripsi Lomba :</label>
-                    <textarea id="deskripsi-lomba" name="deskripsi-lomba" rows="10" placeholder="Masukkan Deskripsi Lomba" required></textarea>
+                    <input type="text" id="deskripsi-lomba" name="deskripsi-lomba" placeholder="Masukkan Deskripsi Lomba" required />
                 </div>
-    
+            
                 <!-- Tombol Tambah -->
                 <button type="submit" class="btn-submit">Tambah</button>
             </form>
+            
         </div>
         
         <!-- Form Pendataan Lomba -->
