@@ -60,7 +60,7 @@
             Beranda
         </a>
 
-        <a href="TambahAgenda.html" class="menu-item" id="menu-tambah-agenda" onclick="setActiveMenu('menu-tambah-agenda')">
+        <a href="TambahAgenda.php" class="menu-item" id="menu-tambah-agenda" onclick="setActiveMenu('menu-tambah-agenda')">
             <svg class="menu-icon" viewBox="0 0 24 24">
                 <path d="M20 12a8 8 0 0 0-8-8v8l5.657 5.657A7.95 7.95 0 0 0 20 12z"/>
                 <path d="M12 4a8 8 0 0 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>

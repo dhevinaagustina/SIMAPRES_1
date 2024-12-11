@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="collapse-arrow">≪</span>
         </div>
         
-        <a href="dashboard.html" class="menu-item">
+        <a href="dashboard.php" class="menu-item">
             <svg class="menu-icon" viewBox="0 0 24 24">
                 <path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
             </svg>
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             Prestasi Mahasiswa
         </a>
 
-        <a href="presmakomp.html" class="menu-item">
+        <a href="agendakomp.php" class="menu-item">
             <svg class="menu-icon" viewBox="0 0 24 24">
                 <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
                 <path d="M11 11h2v6h-2zm0-4h2v2h-2z"/>
