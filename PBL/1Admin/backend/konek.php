@@ -10,5 +10,5 @@ function connectToDatabase($servername, $dbname) {
     $conn = sqlsrv_connect($servername, $connectionOptions);
     if (!$conn) {
         die("Connection failed: " . print_r(sqlsrv_errors(), true));
-    } else {
+    } 
 

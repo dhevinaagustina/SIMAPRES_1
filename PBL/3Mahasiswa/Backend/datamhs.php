@@ -19,7 +19,7 @@ function connectToDatabase($servername, $dbname) {
 }
 
 // Mendefinisikan koneksi
-$servername = "LAPTOP-OF3KH5J0\DBMS2024";  // Ganti dengan nama server Anda
+$servername = "DESKTOP-EJT421I\DBMS2024";  // Ganti dengan nama server Anda
 $dbname = "PBL_DB";         // Nama database Anda
 
 $conn = connectToDatabase($servername, $dbname);
