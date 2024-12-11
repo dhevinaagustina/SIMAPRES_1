@@ -279,7 +279,7 @@ table th {
     content: '📁'; /* Ikon folder */
     margin-right: 8px;
   }
-  
+
   /* Tampilkan nama file setelah dipilih */
   .file-name {
     margin-top: 10px;
@@ -317,8 +317,3 @@ table th {
     font-size: 16px;
 }
 
-#simpan-data:hover {
-    background-color: #3e3198;
-}
-
-  
