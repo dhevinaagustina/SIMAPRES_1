@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 switch ($user['role']) {
                     case 'admin':
-                        header("Location: ../1Admin/Beranda.html");
+                        header("Location: ../1Admin/Beranda.php");
                         break;
                     case 'dosen':
                         header("Location: ../2Dosen/dashboarddosen.html");
