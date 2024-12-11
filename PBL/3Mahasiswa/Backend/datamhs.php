@@ -9,12 +9,12 @@ function connectToDatabase($servername, $dbname) {
 
     // Menggunakan sqlsrv_connect untuk koneksi ke SQL Server
     $conn = sqlsrv_connect($servername, $connectionOptions);
-    
+
     // Cek apakah koneksi berhasil
     if (!$conn) {
         die("Connection failed: " . print_r(sqlsrv_errors(), true));
     }
-    
+
     return $conn;
 }
 
@@ -50,3 +50,5 @@ if ($query_dosen) {
 sqlsrv_close($conn);
 
 ?>
+
+
