@@ -2,7 +2,7 @@
 session_start();
 require 'konek.php';
 
-$conn = connectToDatabase("LAPTOP-OF3KH5J0\DBMS2024", "PBL_DB");
+$conn = connectToDatabase("DESKTOP-EJT421I\DBMS2024", "PBL_DB");
 
 if (!$conn) {
     die("Koneksi gagal: " . print_r(sqlsrv_errors(), true));

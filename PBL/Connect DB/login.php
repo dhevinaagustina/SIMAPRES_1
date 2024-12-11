@@ -38,10 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         header("Location: ../1Admin/Beranda.php");
                         break;
                     case 'dosen':
-                        header("Location: ../2Dosen/dashboarddosen.html");
+                        header("Location: ../2Dosen/dashboarddosen.php");
                         break;
                     case 'mahasiswa':
-                        header("Location: ../3Mahasiswa/dashboard.html");
+                        header("Location: ../3Mahasiswa/dashboard.php");
                         break;
                 }
                 exit();
