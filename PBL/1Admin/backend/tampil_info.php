@@ -19,5 +19,3 @@ if ($result === false) {
     // Jika query gagal
     die("Error executing query: " . print_r(sqlsrv_errors(), true));
 }
-
-?>

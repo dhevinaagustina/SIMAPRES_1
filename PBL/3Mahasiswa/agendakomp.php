@@ -59,6 +59,19 @@
             opacity: 0.8;
         }
 
+        #logout-button {
+            background: #FF4C4C; 
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            transition: background 0.3s ease;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+        }
+
         .menu-item {
             display: flex;
             align-items: center;
@@ -191,7 +204,6 @@
         <div class="user-profile">
             <div class="user-avatar"></div>
             <span class="username">Username</span>
-            <span class="collapse-arrow">≪</span>
         </div>
         
         <a href="dashboard.php" class="menu-item">
@@ -213,6 +225,8 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 12a8 8 0 0 0-8-8v8l5.657 5.657A7.95 7.95 0 0 0 20 12z"/><path d="M12 4a8 8 0 0 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/></svg>
             Rangking Prestasi
         </a>
+
+        <a href="../0Loginpage/login.html" id="logout-button" class="menu-item hidden">Keluar</a>
     </div>
 
     <div class="main-content">

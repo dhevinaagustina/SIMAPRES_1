@@ -59,6 +59,19 @@
             opacity: 0.8;
         }
 
+        #logout-button {
+            background: #FF4C4C; 
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            transition: background 0.3s ease;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+        }
+
         .menu-item {
             display: flex;
             align-items: center;
@@ -196,7 +209,6 @@
         <div class="user-profile">
             <div class="user-avatar"></div>
             <span class="username">Username</span>
-            <span class="collapse-arrow">≪</span>
         </div>
         
         <a href="dashboarddosen.php" class="menu-item">
@@ -229,6 +241,8 @@
             </svg>
             Peringkat Mahasiswa
         </a>
+
+        <a href="../0Loginpage/login.html" id="logout-button" class="menu-item hidden">Keluar</a>        
     </div>
 
     <div class="main-content">

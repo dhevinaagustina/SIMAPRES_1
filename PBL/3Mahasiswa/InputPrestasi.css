@@ -300,4 +300,25 @@ table th {
 .table-section select{
     width: 400px;
 }
+
+.form-actions {
+    text-align: center; /* Menempatkan tombol di sebelah kanan */
+    margin-top: 20px;
+    width: 100%;
+}
+
+#simpan-data {
+    background-color: #251d52;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#simpan-data:hover {
+    background-color: #3e3198;
+}
+
   

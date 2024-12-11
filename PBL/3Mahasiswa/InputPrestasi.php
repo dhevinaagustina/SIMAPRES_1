@@ -6,89 +6,89 @@
     <title>Input Prestasi</title>
     <link rel="stylesheet" type="text/css" href="InputPrestasi.css">
     <?php
-    include_once 'Backend/datamhs.php';//input nama pada tabel data mahasiswa
+    include_once 'Backend/datamhs.php'; //input nama pada tabel data mahasiswa
     ?>
     <script>
     function previewFile(input, previewId, filenameId) {
-    const file = input.files[0];
-    const preview = document.getElementById(previewId);
-    const filename = document.getElementById(filenameId);
+        const file = input.files[0];
+        const preview = document.getElementById(previewId);
+        const filename = document.getElementById(filenameId);
 
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            // Jika file adalah gambar, tampilkan di elemen <img>
-            if (file.type.startsWith("image/")) {
-                preview.src = e.target.result;
-            } else {
-                preview.src = "Asset/img icon.jpg"; // Placeholder default untuk non-gambar
-            }
-        };
-        reader.readAsDataURL(file);
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                // Jika file adalah gambar, tampilkan di elemen <img>
+                if (file.type.startsWith("image/")) {
+                    preview.src = e.target.result;
+                } else {
+                    preview.src = "Asset/img icon.jpg"; // Placeholder default untuk non-gambar
+                }
+            };
+            reader.readAsDataURL(file);
 
-        // Tampilkan nama file
-        filename.textContent = file.name;
-    } else {
-        preview.src = "Asset/img icon.jpg"; // Kembali ke placeholder jika tidak ada file
-        filename.textContent = "Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)";
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Fungsi untuk menambahkan baris baru ke tabel
-    function tambahBaris(tabelId) {
-        const table = document.getElementById(tabelId);
-        const tbody = table.querySelector("tbody");
-        const rowCount = tbody.rows.length;
-        const newRow = tbody.insertRow();
-
-        // Tambahkan sel dan isinya
-        newRow.innerHTML = `
-            <td>${rowCount + 1}</td>
-            <td>
-                <input list="${tabelId === "mahasiswa-table" ? "nama-mahasiswa" : "nama-dosen"}" type="text" name="${tabelId === "mahasiswa-table" ? "mahasiswa" : "dosen"}">
-            </td>
-            <td>
-                <select>
-                    <option>Pilih Peran</option>
-                    ${tabelId === "mahasiswa-table" ? `
-                    <option>Ketua</option>
-                    <option>Anggota</option>
-                    <option>Personal</option>` : `
-                    <option>Melakukan pembinaan kegiatan mahasiswa di bidang akademik (PA)</option>
-                    <option>Membimbing mahasiswa menghasilkan produk saintifik (Nasional)</option>
-                    <option>Membimbing mahasiswa menghasilkan produk saintifik (Internasional)</option>
-                    <option>Membimbing mahasiswa mengikuti kompetisi akademik (Nasional)</option>
-                    <option>Membimbing mahasiswa mengikuti kompetisi akademik (Internasional)</option>`}
-                </select>
-            </td>
-            <td><button class="hapus-baris">❌</button></td>
-        `;
-
-        // Tambahkan event listener ke tombol hapus
-        newRow.querySelector(".hapus-baris").addEventListener("click", function () {
-            newRow.remove();
-        });
+            // Tampilkan nama file
+            filename.textContent = file.name;
+        } else {
+            preview.src = "Asset/img icon.jpg"; // Kembali ke placeholder jika tidak ada file
+            filename.textContent = "Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)";
+        }
     }
 
-    // Tambahkan event listener untuk tombol "+ Tambah"
-    document.getElementById("tambah-mahasiswa").addEventListener("click", function () {
-        tambahBaris("mahasiswa-table");
-    });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fungsi untuk menambahkan baris baru ke tabel
+        function tambahBaris(tabelId) {
+            const table = document.getElementById(tabelId);
+            const tbody = table.querySelector("tbody");
+            const rowCount = tbody.rows.length;
+            const newRow = tbody.insertRow();
 
-    document.getElementById("tambah-pembimbing").addEventListener("click", function () {
-        tambahBaris("pembimbing-table");
-    });
+            // Tambahkan sel dan isinya
+            newRow.innerHTML = `
+                <td>${rowCount + 1}</td>
+                <td>
+                    <input list="${tabelId === "mahasiswa-table" ? "nama-mahasiswa" : "nama-dosen"}" type="text" name="${tabelId === "mahasiswa-table" ? "mahasiswa" : "dosen"}">
+                </td>
+                <td>
+                    <select>
+                        <option>Pilih Peran</option>
+                        ${tabelId === "mahasiswa-table" ? `
+                        <option>Ketua</option>
+                        <option>Anggota</option>
+                        <option>Personal</option>` : `
+                        <option>Melakukan pembinaan kegiatan mahasiswa di bidang akademik (PA)</option>
+                        <option>Membimbing mahasiswa menghasilkan produk saintifik (Nasional)</option>
+                        <option>Membimbing mahasiswa menghasilkan produk saintifik (Internasional)</option>
+                        <option>Membimbing mahasiswa mengikuti kompetisi akademik (Nasional)</option>
+                        <option>Membimbing mahasiswa mengikuti kompetisi akademik (Internasional)</option>`}
+                    </select>
+                </td>
+                <td><button class="hapus-baris">❌</button></td>
+            `;
 
-    // Event listener untuk tombol hapus pada baris awal
-    document.querySelectorAll(".hapus-baris").forEach(button => {
-        button.addEventListener("click", function () {
-            button.closest("tr").remove();
+            // Tambahkan event listener ke tombol hapus
+            newRow.querySelector(".hapus-baris").addEventListener("click", function () {
+                newRow.remove();
+            });
+        }
+
+        // Tambahkan event listener untuk tombol "+ Tambah"
+        document.getElementById("tambah-mahasiswa").addEventListener("click", function () {
+            tambahBaris("mahasiswa-table");
+        });
+
+        document.getElementById("tambah-pembimbing").addEventListener("click", function () {
+            tambahBaris("pembimbing-table");
+        });
+
+        // Event listener untuk tombol hapus pada baris awal
+        document.querySelectorAll(".hapus-baris").forEach(button => {
+            button.addEventListener("click", function () {
+                button.closest("tr").remove();
+            });
         });
     });
-});
 
-</script>
+    </script>
 </head>
 <body>
     <div class="sidebar">
@@ -137,219 +137,133 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
         
     <div class="data">
-        <form class="pendataan" action="Backend/input.php">
-                <div class="form">
-                    <label for="prodi">Program Studi:</label>
-                    <input list="prodi-options" id="prodi" name="prodi">
-                    <datalist id="prodi-options">
-                        <option value="Teknik Informatika">
-                        <option value="Sistem Informasi">
-                    </datalist>
-                    
-                </div>
-
-                <div class="form">
-                    <label for="prodi">Jenis Kompetisi </label>
-                    <input list="jenis" type="text" id="jenis-kompetisi" name="jenis-kompetisi">
-                    <datalist id="jenis">
-                        <option value="Akademik">
-                        <option value="Non Akademik">
-                    </datalist>
-                </div>
-                
-                <div class="form">
-                    <label for="Kompetisi">Tingkat Kompetisi </label>
-                    <input list="tingkat" type="text" id="tingkat-kompetisi" name="tingkat-kompetisi">
-                    <datalist id="tingkat">
-                        <option value="Internasional"></option>
-                        <option value="Nasional"></option>
-                    </datalist>
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">Judul Kompetisi </label>
-                    <input type="text" id="judul-kompetisi" name="judul-kompetisi">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">Judul Kompetisi (English) </label>
-                    <input type="text" id="judul-kompetisi" name="judul-kompetisi">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">Tempat Kompetisi </label>
-                    <input type="text" id="tempat-kompetisi" name="tempat-kompetisi">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">Tempat Kompetisi (English) </label>
-                    <input type="text" id="tempat-kompetisi" name="tempat-kompetisi">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">URL Kompetisi </label>
-                    <input type="text" id="url-kompetisi" name="url-kompetisi">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">Tanggal Mulai </label>
-                    <input type="date" id="tanggal" name="tanggal">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">Tanggal Akhir </label>
-                    <input type="date" id="tanggal" name="tanggal">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">Jumlah PT (Berpartisipasi)</label>
-                    <input type="text" id="tanggal" name="tanggal">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">Jumlah Peserta </label>
-                    <input type="text" id="Peserta" name="peserta">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">No Surat Tugas </label>
-                    <input type="text" id="surat" name="surat">
-                </div>
-
-                <div class="form">
-                    <label for="Kompetisi">Tanggal Surat Tugas </label>
-                    <input type="text" id="Tanggal" name="Tanggal">
-                </div>
-            </form>
-            <div class="data">
-                <!-- Form untuk file -->
-                <div class="file-section">
-                    
-                    <div class="file-item">
-                        <label>File Surat Tugas</label>
-                        <div class="file-upload">
-                        <img src="Asset/img icon.jpg" alt="Placeholder" id="preview-surat">
-                            <p>Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)</p>
-                            <input type="file" id="file-upload" class="custom-file-input" accept=".jpg, .jpeg, .png, .pdf, .docx" onchange="previewFile(this, 'preview-surat', 'filename-surat')">
-                        </div>
-                    </div>
-                    <div class="file-item">
-                        <label>Foto Kegiatan</label>
-                        <div class="file-upload">
-                        <img src="Asset/img icon.jpg" alt="Placeholder" id="preview-kegiatan">
-                            <p>Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)</p>
-                            <input type="file" id="file-upload" class="custom-file-input" accept=".jpg, .jpeg, .png, .pdf, .docx" onchange="previewFile(this, 'preview-kegiatan', 'filename-kegiatan')">
-                        </div>
-                    </div>
-                    <div class="file-item">
-                        <label>File Sertifikat</label>
-                        <div class="file-upload">
-                        <img src="Asset/img icon.jpg" alt="Placeholder" id="preview-sertifikat">
-                            <p>Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)</p>
-                            <input type="file" id="file-upload" class="custom-file-input" accept=".jpg, .jpeg, .png, .pdf, .docx" onchange="previewFile(this, 'preview-sertifikat', 'filename-sertifikat')">
-                        </div>
-                    </div>
-                    <div class="file-item">
-                        <label>File Poster</label>
-                        <div class="file-upload">
-                        <img src="Asset/img icon.jpg" alt="Placeholder" id="preview-poster">
-                            <p>Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)</p>
-                            <input type="file" id="file-upload" class="custom-file-input" accept=".jpg, .jpeg, .png, .pdf, .docx" onchange="previewFile(this, 'preview-poster', 'filename-poster')">
-                        </div>
-                    </div>
-                </div>
-            
-                <!-- Data Mahasiswa -->
-                <div class="table-section">
-    <h2>Data Mahasiswa</h2>
-    <table id="mahasiswa-table">
-        <thead>
-            <tr>
-                <th>NO</th>
-                <th>Mahasiswa</th>
-                <th>Peran Mahasiswa</th>
-                <th>Hapus</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>
-                    <input list="nama-mahasiswa" type="text" name="mahasiswa">
-                    <datalist id="nama-mahasiswa">
-                        <?php 
-                        if (!empty($options_mahasiswa)) {
-                            foreach ($options_mahasiswa as $option): ?>
-                                <option value="<?php echo htmlspecialchars($option['nama']); ?>"><?php echo htmlspecialchars($option['nim']); ?></option>
-                        <?php endforeach; 
-                        } else {
-                            echo "<option value=''>Tidak ada data mahasiswa</option>";
-                        }
-                        ?>
-                    </datalist>
-                </td>
-                <td>
-                    <select>
-                        <option>Pilih Peran</option>
-                        <option>Ketua</option>
-                        <option>Anggota</option>
-                        <option>Personal</option>
-                    </select>
-                </td>
-                <td><button class="hapus-baris">❌</button></td>
-            </tr>
-        </tbody>
-    </table>
-    <button id="tambah-mahasiswa">+ Tambah</button>
-</div>
-
-<!-- Data Pembimbing -->
-<div class="table-section">
-    <h2>Data Pembimbing</h2>
-    <table id="pembimbing-table">
-        <thead>
-            <tr>
-                <th>NO</th>
-                <th>Pembimbing</th>
-                <th>Peran Pembimbing</th>
-                <th>Hapus</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td><input list="nama-dosen" type="text" name="dosen">
-                    <datalist id="nama-dosen">
-                        <?php 
-                        if (!empty($options_dosen)) {
-                            foreach ($options_dosen as $option): ?>
-                                <option value="<?php echo htmlspecialchars($option['nama']); ?>"><?php echo htmlspecialchars($option['nip']); ?></option>
-                        <?php endforeach; 
-                        } else {
-                            echo "<option value=''>Tidak ada data dosen</option>";
-                        }
-                        ?>
-                    </datalist>
-                </td>
-                <td>
-                    <select>
-                        <option>Pilih Peran</option>
-                        <option>Melakukan pembinaan kegiatan mahasiswa di bidang akademik (PA)</option>
-                        <option>Membimbing mahasiswa menghasilkan produk saintifik (Nasional)</option>
-                        <option>Membimbing mahasiswa menghasilkan produk saintifik (Internasional)</option>
-                        <option>Membimbing mahasiswa mengikuti kompetisi akademik (Nasional)</option>
-                        <option>Membimbing mahasiswa mengikuti kompetisi akademik (Internasional)</option>
-                    </select>
-                </td>
-                <td><button class="hapus-baris">❌</button></td>
-            </tr>
-        </tbody>
-    </table>
-    <button id="tambah-pembimbing">+ Tambah</button>
-</div>
-            </div>            
+    <form class="pendataan" action="Backend/input.php" method="POST" enctype="multipart/form-data">
+        <div class="form">
+            <label for="program_studi">Program Studi</label>
+            <input list="program_studi-options" id="program_studi" name="program_studi">
+            <datalist id="program_studi-options">
+                <option value="Teknik Informatika">
+                <option value="Sistem Informasi">
+            </datalist>
         </div>
-    </div>
 
+        <div class="form">
+            <label for="jenis_kompetisi">Jenis Kompetisi</label>
+            <input list="jenis" id="jenis_kompetisi" name="jenis_kompetisi">
+            <datalist id="jenis">
+                <option value="Akademik">
+                <option value="Non Akademik">
+            </datalist>
+        </div>
+                
+        <div class="form">
+            <label for="tingkat_kompetisi">Tingkat Kompetisi</label>
+            <input list="tingkat" type="text" id="tingkat_kompetisi" name="tingkat_kompetisi">
+            <datalist id="tingkat">
+                <option value="Internasional"></option>
+                <option value="Nasional"></option>
+            </datalist>
+        </div>
+
+        <div class="form">
+            <label for="judul_kompetisi">Judul Kompetisi</label>
+            <input type="text" id="judul_kompetisi" name="judul_kompetisi">
+        </div>
+
+        <div class="form">
+            <label for="judul_kompetisi_english">Judul Kompetisi (English)</label>
+            <input type="text" id="judul_kompetisi_english" name="judul_kompetisi_english">
+        </div>
+
+        <div class="form">
+            <label for="tempat_kompetisi">Tempat Kompetisi</label>
+            <input type="text" id="tempat_kompetisi" name="tempat_kompetisi">
+        </div>
+
+        <div class="form">
+            <label for="tempat_kompetisi_english">Tempat Kompetisi (English)</label>
+            <input type="text" id="tempat_kompetisi_english" name="tempat_kompetisi_english">
+        </div>
+
+        <div class="form">
+            <label for="url_kompetisi">URL Kompetisi</label>
+            <input type="text" id="url_kompetisi" name="url_kompetisi">
+        </div>
+
+        <div class="form">
+            <label for="tanggal_mulai">Tanggal Mulai</label>
+            <input type="date" id="tanggal_mulai" name="tanggal_mulai">
+        </div>
+
+        <div class="form">
+            <label for="tanggal_akhir">Tanggal Akhir</label>
+            <input type="date" id="tanggal_akhir" name="tanggal_akhir">
+        </div>
+
+        <div class="form">
+            <label for="jumlah_pt">Jumlah PT (Berpartisipasi)</label>
+            <input type="text" id="jumlah_pt" name="jumlah_pt">
+        </div>
+
+        <div class="form">
+            <label for="jumlah_peserta">Jumlah Peserta</label>
+            <input type="text" id="jumlah_peserta" name="jumlah_peserta">
+        </div>
+
+        <div class="form">
+            <label for="no_surat_tugas">No Surat Tugas</label>
+            <input type="text" id="no_surat_tugas" name="no_surat_tugas">
+        </div>
+
+        <div class="form">
+            <label for="tanggal_surat_tugas">Tanggal Surat Tugas</label>
+            <input type="date" id="tanggal_surat_tugas" name="tanggal_surat_tugas">
+        </div>
+
+        <!-- Form untuk upload file -->
+        <div class="file-section">
+            <div class="file-item">
+                <label>File Surat Tugas</label>
+                <div class="file-upload">
+                    <img src="Asset/img icon.jpg" alt="Placeholder" id="preview-surat">
+                    <p>Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)</p>
+                    <input type="file" id="file-upload" class="custom-file-input" accept=".jpg, .jpeg, .png, .pdf, .docx" onchange="previewFile(this, 'preview-surat', 'filename-surat')">
+                </div>
+            </div>
+
+            <div class="file-item">
+                <label>Foto Kegiatan</label>
+                <div class="file-upload">
+                    <img src="Asset/img icon.jpg" alt="Placeholder" id="preview-kegiatan">
+                    <p>Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)</p>
+                    <input type="file" id="file-upload" class="custom-file-input" accept=".jpg, .jpeg, .png, .pdf, .docx" onchange="previewFile(this, 'preview-kegiatan', 'filename-kegiatan')">
+                </div>
+            </div>
+
+            <div class="file-item">
+                <label>File Sertifikat</label>
+                <div class="file-upload">
+                    <img src="Asset/img icon.jpg" alt="Placeholder" id="preview-sertifikat">
+                    <p>Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)</p>
+                    <input type="file" id="file-upload" class="custom-file-input" accept=".jpg, .jpeg, .png, .pdf, .docx" onchange="previewFile(this, 'preview-sertifikat', 'filename-sertifikat')">
+                </div>
+            </div>
+
+            <div class="file-item">
+                <label>File Poster</label>
+                <div class="file-upload">
+                    <img src="Asset/img icon.jpg" alt="Placeholder" id="preview-poster">
+                    <p>Ukuran (Max: 5000KB)<br>Ekstensi (jpg, jpeg, png, pdf, docx)</p>
+                    <input type="file" id="file-upload" class="custom-file-input" accept=".jpg, .jpeg, .png, .pdf, .docx" onchange="previewFile(this, 'preview-poster', 'filename-poster')">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" id="simpan-data">Simpan</button>
+        </div>
+    </form>
+</div>
+</div>
 </body>
 </html>
