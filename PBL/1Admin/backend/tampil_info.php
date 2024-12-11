@@ -1,28 +1,23 @@
 <?php
 session_start();
-require 'konek.php';
+require 'konek.php';  // Memasukkan file koneksi
 
 // Koneksi ke database
-$conn = connectToDatabase("LAPTOP-OF3KH5J0\DBMS2024", "PBL_DB");
+$conn = connectToDatabase("DESKTOP-EJT421I\\DBMS2024", "PBL_DB");
 
-try {
-    $query = "SELECT * FROM presma.infoLomba";
-    $stmt = sqlsrv_query($conn, $query);
-
-    if ($stmt === false) {
-        throw new Exception(print_r(sqlsrv_errors(), true));
-    }
-
-    $data = [];
-    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        $data[] = $row;
-    }
-
-    // Kembalikan data dalam format JSON
-    header('Content-Type: application/json');
-    echo json_encode($data);
-
-} catch (Exception $e) {
-    echo "Terjadi kesalahan: " . htmlspecialchars($e->getMessage());
+if (!$conn) {
+    // Jika koneksi gagal
+    die("Koneksi gagal: " . print_r(sqlsrv_errors(), true));
 }
+
+// Query untuk mengambil data agenda
+$sql = "SELECT * FROM presma.infoLomba ";
+
+$result = sqlsrv_query($conn, $sql);  // Menjalankan query
+
+if ($result === false) {
+    // Jika query gagal
+    die("Error executing query: " . print_r(sqlsrv_errors(), true));
+}
+
 ?>
