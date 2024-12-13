@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prestasi Mahasiswa Dashboard</title>
+    <?php
+    require_once 'Backend/tampil_inputdata.php';
+    ?>
     <style>
         * {
             margin: 0;
@@ -179,7 +182,7 @@
             Beranda
         </a>
 
-        <a href="presmakomp.html" class="menu-item">
+        <a href="presmakomp.php" class="menu-item">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#2D2669"><path d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm0 16H5V5h14v14z"/><path d="m13.293 6.293-4 4-2.293-2.293-1.414 1.414L8.293 12l1.414 1.414L14 8.414l4.293 4.293 1.414-1.414L13.293 6.293z"/></svg>
             Prestasi Mahasiswa
         </a>
@@ -200,47 +203,34 @@
             <h1 class="page-title">Prestasi Mahasiswa</h1>
             <div class="page-nav">
                 <div class="page-nav">
-                    <a href="presmakomp.html">Kompetisi</a>
+                    <a href="presmakomp.php">Kompetisi</a>
                     <span>|</span>
-                    <a href="presmapres.html">Prestasi</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Valid</h2>
-            <div class="achievement-card">
-                <div class="achievement-info">
-                    <h3>KMIPN V</h3>
-                    <div class="achievement-meta">
-                        <span>Nasional</span>
-                        <span>|</span>
-                        <span>Keamanan Siber</span>
-                    </div>
-                </div>
-                <div class="achievement-status">
-                    <div class="score">4</div>
-                    <div class="status">Valid</div>
+                    <a href="presmapres.php">Prestasi</a>
                 </div>
             </div>
         </div>
 
         <div class="section">
             <h2 class="section-title">Menunggu Validasi</h2>
-            <div class="achievement-card">
-                <div class="achievement-info">
-                    <h3>PIMNAS</h3>
-                    <div class="achievement-meta">
-                        <span>Nasional</span>
-                        <span>|</span>
-                        <span>PKM-GFT</span>
-                    </div>
-                </div>
-                <div class="achievement-status">
-                    <div class="score">-</div>
-                    <div class="status">Proses</div>
-                </div>
-            </div>
+                  <!-- Tampilkan data kompetisi -->
+                  <?php while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)): ?>
+                  <div class="achievement-card">
+                      <div class="achievement-info">
+                          <h3><?php echo htmlspecialchars($row['judul_kompetisi']); ?></h3>
+                          <div class="achievement-meta">
+                              <span><?php echo htmlspecialchars($row['tingkat_kompetisi']); ?></span>
+                              <span>|</span>
+                              <span><?php echo htmlspecialchars($row['jenis_kompetisi']); ?></span>
+                          </div>
+                      </div>
+                      <div class="achievement-status">
+                          <div class="score">
+                              <?php echo $row['skor'] !== null ? htmlspecialchars($row['skor']) : '-'; ?>
+                          </div>
+                          <div class="status">Proses Validasi</div>
+                      </div>
+                  </div>
+              <?php endwhile; ?>
 
             
             <a href="InputPrestasi.php" class="input-prestasi">

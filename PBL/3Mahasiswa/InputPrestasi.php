@@ -34,60 +34,6 @@
         }
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-        // Fungsi untuk menambahkan baris baru ke tabel
-        function tambahBaris(tabelId) {
-            const table = document.getElementById(tabelId);
-            const tbody = table.querySelector("tbody");
-            const rowCount = tbody.rows.length;
-            const newRow = tbody.insertRow();
-
-            // Tambahkan sel dan isinya
-            newRow.innerHTML = `
-                <td>${rowCount + 1}</td>
-                <td>
-                    <input list="${tabelId === "mahasiswa-table" ? "nama-mahasiswa" : "nama-dosen"}" type="text" name="${tabelId === "mahasiswa-table" ? "mahasiswa" : "dosen"}">
-                </td>
-                <td>
-                    <select>
-                        <option>Pilih Peran</option>
-                        ${tabelId === "mahasiswa-table" ? `
-                        <option>Ketua</option>
-                        <option>Anggota</option>
-                        <option>Personal</option>` : `
-                        <option>Melakukan pembinaan kegiatan mahasiswa di bidang akademik (PA)</option>
-                        <option>Membimbing mahasiswa menghasilkan produk saintifik (Nasional)</option>
-                        <option>Membimbing mahasiswa menghasilkan produk saintifik (Internasional)</option>
-                        <option>Membimbing mahasiswa mengikuti kompetisi akademik (Nasional)</option>
-                        <option>Membimbing mahasiswa mengikuti kompetisi akademik (Internasional)</option>`}
-                    </select>
-                </td>
-                <td><button class="hapus-baris">❌</button></td>
-            `;
-
-            // Tambahkan event listener ke tombol hapus
-            newRow.querySelector(".hapus-baris").addEventListener("click", function () {
-                newRow.remove();
-            });
-        }
-
-        // Tambahkan event listener untuk tombol "+ Tambah"
-        document.getElementById("tambah-mahasiswa").addEventListener("click", function () {
-            tambahBaris("mahasiswa-table");
-        });
-
-        document.getElementById("tambah-pembimbing").addEventListener("click", function () {
-            tambahBaris("pembimbing-table");
-        });
-
-        // Event listener untuk tombol hapus pada baris awal
-        document.querySelectorAll(".hapus-baris").forEach(button => {
-            button.addEventListener("click", function () {
-                button.closest("tr").remove();
-            });
-        });
-    });
-
     </script>
 </head>
 <body>
@@ -164,6 +110,31 @@
                 <option value="Nasional"></option>
             </datalist>
         </div>
+
+            <div class="form">
+            <label for="dosen_pembimbing">Dosen Pembimbing</label>
+            <input list="dosen-options" id="dosen_pembimbing" name="dosen_pembimbing">
+            <datalist id="dosen-options">
+                <?php foreach ($options_dosen as $dosen): ?>
+                    <option value="<?php echo htmlspecialchars($dosen['nama']); ?>">
+                        <?php echo htmlspecialchars($dosen['nama']); ?> (<?php echo htmlspecialchars($dosen['nip']); ?>)
+                    </option>
+                <?php endforeach; ?>
+            </datalist>
+        </div>
+
+        <div class="form">
+            <label for="mahasiswa">Nama Mahasiswa</label>
+            <input list="mahasiswa-options" id="mahasiswa" name="mahasiswa">
+            <datalist id="mahasiswa-options">
+                <?php foreach ($options_mahasiswa as $mahasiswa): ?>
+                    <option value="<?php echo htmlspecialchars($mahasiswa['nama']); ?>">
+                        <?php echo htmlspecialchars($mahasiswa['nama']); ?> (<?php echo htmlspecialchars($mahasiswa['nim']); ?>)
+                    </option>
+                <?php endforeach; ?>
+            </datalist>
+        </div>
+
 
         <div class="form">
             <label for="judul_kompetisi">Judul Kompetisi</label>
@@ -260,7 +231,9 @@
         </div>
 
         <div class="form-actions">
-            <button type="submit" id="simpan-data">Simpan</button>
+            <a href="presmakomp.php">   
+            <button onclick="" type="submit" id="simpan-data">Simpan</button>
+            </a>
         </div>
     </form>
 </div>

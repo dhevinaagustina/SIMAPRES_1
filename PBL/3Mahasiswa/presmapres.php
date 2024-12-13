@@ -1,3 +1,25 @@
+<?php
+session_start();
+require 'backend/konek.php';  // Memasukkan file koneksi
+
+// Koneksi ke database
+$conn = connectToDatabase("LAPTOP-OF3KH5J0\DBMS2024", "PBL_DB");
+
+if (!$conn) {
+    // Jika koneksi gagal
+    die("Koneksi gagal: " . print_r(sqlsrv_errors(), true));
+}
+
+// Query untuk mengambil data agenda
+$sql = "SELECT * FROM presma.Kompetisi WHERE status='1'";
+
+$result = sqlsrv_query($conn, $sql);  // Menjalankan query
+
+if ($result === false) {
+    // Jika query gagal
+    die("Error executing query: " . print_r(sqlsrv_errors(), true));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +89,6 @@
             transition: all 0.3s ease;
         }
 
-
         .menu-item:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -102,7 +123,6 @@
             margin-bottom: 48px;
         }
 
-
         .achievement-card {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
@@ -135,7 +155,7 @@
         }
 
         .status {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: white;
             margin-bottom: 4px;
@@ -155,7 +175,7 @@
             Beranda
         </a>
 
-        <a href="presmakomp.html" class="menu-item">
+        <a href="presmakomp.php" class="menu-item">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#2D2669"><path d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm0 16H5V5h14v14z"/><path d="m13.293 6.293-4 4-2.293-2.293-1.414 1.414L8.293 12l1.414 1.414L14 8.414l4.293 4.293 1.414-1.414L13.293 6.293z"/></svg>
             Prestasi Mahasiswa
         </a>
@@ -175,29 +195,32 @@
         <div class="page-header">
             <h1 class="page-title">Prestasi Mahasiswa</h1>
             <div class="page-nav">
-                <a href="presmakomp.html">Kompetisi</a>
+                <a href="presmakomp.php">Kompetisi</a>
                 <span>|</span>
-                <a href="presmapres.html">Prestasi</a>
+                <a href="presmapres.php">Prestasi</a>
             </div>
         </div>
 
         <div class="section">
-
-            <div class="achievement-card">
-                <div class="achievement-info">
-                    <h3>Juara 1 PIMNAS PKM-GFT</h3>
-                    <div class="achievement-meta">
-                        <span>Nasional</span>
-                        <span>|</span>
-                        <span>Sains</span>
+            <?php while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)): ?>
+                <div class="achievement-card">
+                    <div class="achievement-info">
+                        <h3><?php echo htmlspecialchars($row['judul_kompetisi']); ?></h3>
+                        <div class="achievement-meta">
+                            <span><?php echo htmlspecialchars($row['tingkat_kompetisi']); ?></span>
+                            <span>|</span>
+                            <span><?php echo htmlspecialchars($row['jenis_kompetisi']); ?></span>
+                        </div>
+                    </div>
+                    <div class="achievement-status">
+                        <div class="score">
+                            <?php echo isset($row['skor']) ? htmlspecialchars($row['skor']) : '-'; ?>
+                        </div>
+                        <div class="status">Tervalidasi</div>
                     </div>
                 </div>
-                <div class="achievement-status">
-                    <div class="score">Score</div>
-                    <div class="status">4</div>
-                </div>
-            </div>
+            <?php endwhile; ?>
         </div>
     </div>
 </body>
-</html> 
+</html>

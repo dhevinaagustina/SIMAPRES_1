@@ -19,23 +19,14 @@ function connectToDatabase($servername, $dbname) {
 }
 
 // Mendefinisikan koneksi
-$servername = "DESKTOP-EJT421I\DBMS2024";  // Ganti dengan nama server Anda
+$servername = "LAPTOP-OF3KH5J0\DBMS2024";  // Ganti dengan nama server Anda
 $dbname = "PBL_DB";         // Nama database Anda
 
 $conn = connectToDatabase($servername, $dbname);
 
-// Query untuk mendapatkan data mahasiswa
-$sql_mahasiswa = "SELECT nim, nama FROM presma.Mahasiswa";
+// Query untuk mendapatkan data dosen
 $sql_dosen = "SELECT nip, nama FROM presma.Dosen";
-
-// Query untuk mahasiswa
-$query_mahasiswa = sqlsrv_query($conn, $sql_mahasiswa);
-$options_mahasiswa = [];
-if ($query_mahasiswa) {
-    while ($row = sqlsrv_fetch_array($query_mahasiswa, SQLSRV_FETCH_ASSOC)) {
-        $options_mahasiswa[] = $row; // Menambahkan data mahasiswa ke array
-    }
-}
+$sql_mahasiswa = "SELECT nim, nama FROM presma.Mahasiswa";
 
 // Query untuk dosen
 $query_dosen = sqlsrv_query($conn, $sql_dosen);
@@ -46,9 +37,16 @@ if ($query_dosen) {
     }
 }
 
+// Query untuk mahasiswa
+$query_mahasiswa = sqlsrv_query($conn, $sql_mahasiswa);
+$options_mahasiswa = [];
+if ($query_mahasiswa) {
+    while ($row = sqlsrv_fetch_array($query_mahasiswa, SQLSRV_FETCH_ASSOC)) {
+        $options_mahasiswa[] = $row; // Menambahkan data mahasiswa ke array
+    }
+}
+
 // Tutup koneksi setelah selesai
 sqlsrv_close($conn);
 
 ?>
-
-

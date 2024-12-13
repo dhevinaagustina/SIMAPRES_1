@@ -2,7 +2,7 @@
 session_start();
 require 'konek.php';
 
-$conn = connectToDatabase("DESKTOP-EJT421I\DBMS2024", "PBL_DB");
+$conn = connectToDatabase("LAPTOP-OF3KH5J0\DBMS2024", "PBL_DB");
 
 if (!$conn) {
     die("Koneksi gagal: " . print_r(sqlsrv_errors(), true));
@@ -52,6 +52,7 @@ try {
         mkdir($uploadDir, 0777, true);
     }
 
+
    // Menangani upload file dengan pemeriksaan null
 $uploadedFiles = [];
 $fileFields = [
@@ -73,6 +74,30 @@ foreach ($fileFields as $key => $file) {
     }
 }
 
+$nim = null;
+    if (!empty($_POST['mahasiswa'])) {
+        $sql_mahasiswa = "SELECT nim FROM presma.mahasiswa WHERE nama = ?";
+        $stmt_mahasiswa = sqlsrv_query($conn, $sql_mahasiswa, [$_POST['mahasiswa']]);
+        if ($stmt_mahasiswa && $row_mahasiswa = sqlsrv_fetch_array($stmt_mahasiswa, SQLSRV_FETCH_ASSOC)) {
+            $nim = $row_mahasiswa['nim'];
+        }
+    }
+
+    // Ambil NIP berdasarkan nama dosen pembimbing
+    $nip = null;
+    if (!empty($_POST['dosen_pembimbing'])) {
+        $sql_dosen = "SELECT nip FROM presma.dosen WHERE nama = ?";
+        $stmt_dosen = sqlsrv_query($conn, $sql_dosen, [$_POST['dosen_pembimbing']]);
+        if ($stmt_dosen && $row_dosen = sqlsrv_fetch_array($stmt_dosen, SQLSRV_FETCH_ASSOC)) {
+            $nip = $row_dosen['nip'];
+        }
+    }
+
+    // Validasi NIM dan NIP
+    if (empty($nim) || empty($nip)) {
+        die("Mahasiswa atau dosen pembimbing tidak ditemukan dalam database.");
+    }
+
 // Kode query
 $sql = "INSERT INTO presma.Kompetisi (
     program_studi, jenis_kompetisi, tingkat_kompetisi, 
@@ -81,8 +106,8 @@ $sql = "INSERT INTO presma.Kompetisi (
     url_kompetisi, tanggal_mulai, tanggal_akhir, 
     jumlah_pt, jumlah_peserta, no_surat_tugas, 
     tanggal_surat_tugas, file_surat_tugas, foto_kegiatan, 
-    file_sertifikat, file_poster
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    file_sertifikat, file_poster, dosen_pembimbing, mahasiswa
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $params = [
     $_POST['program_studi'], $_POST['jenis_kompetisi'], $_POST['tingkat_kompetisi'], 
@@ -90,11 +115,11 @@ $params = [
     $_POST['tempat_kompetisi'], $_POST['tempat_kompetisi_english'], 
     $_POST['url_kompetisi'], $_POST['tanggal_mulai'], $_POST['tanggal_akhir'], 
     $_POST['jumlah_pt'], $_POST['jumlah_peserta'], $_POST['no_surat_tugas'], 
-    $_POST['tanggal_surat_tugas'], 
+    $_POST['tanggal_surat_tugas'],
     $uploadedFiles['file_surat_tugas'], 
     $uploadedFiles['foto_kegiatan'], 
     $uploadedFiles['file_sertifikat'], 
-    $uploadedFiles['file_poster']
+    $uploadedFiles['file_poster'],$_POST['dosen_pembimbing'], $_POST['mahasiswa'],$nim,$nip
 ];
 
 $query = sqlsrv_query($conn, $sql, $params);
@@ -104,7 +129,7 @@ if ($query === false) {
 }
 
 // Jika berhasil, arahkan ke halaman sukses
-header("Location: ../presmakomp.html"); // Ganti dengan URL yang sesuai
+header("Location: ../presmakomp.php"); // Ganti dengan URL yang sesuai
 exit; // Pastikan untuk menghentikan script setelah redirect
 
 } catch (Exception $e) {

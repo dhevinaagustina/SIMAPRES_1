@@ -211,7 +211,7 @@
             Beranda
         </a>
 
-        <a href="presmakomp.html" class="menu-item">
+        <a href="presmakomp.php" class="menu-item">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm0 16H5V5h14v14z"/><path d="m13.293 6.293-4 4-2.293-2.293-1.414 1.414L8.293 12l1.414 1.414L14 8.414l4.293 4.293 1.414-1.414L13.293 6.293z"/></svg>
             Prestasi Mahasiswa
         </a>
@@ -232,9 +232,7 @@
     <div class="main-content">
         <h1 class="page-title">Agenda Kompetisi</h1>
         
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search">
-        </div>
+
 
 
         <?php

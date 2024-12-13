@@ -14,6 +14,6 @@ function connectToDatabase($servername, $dbname) {
     return $conn;
 }
 
-}
+
 
 

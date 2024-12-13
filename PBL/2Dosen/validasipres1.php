@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Prestasi</title>
+    <?php
+    require_once 'backend/ctgvalidasi.php';
+    ?>
+
     <style>
         * {
     margin: 0;
@@ -223,43 +227,22 @@ body {
         <div class="main-content">
             <input type="text" class="search-input" placeholder="Search">
             <h1 class="page-title">Daftar Prestasi</h1>
-            <h2 class="subtitle">Data Kompetisi Mahasiswa</h2>
-
+            <?php while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)): ?>
             <div class="competition-card">
                 <div class="competition-info">
-                    <h3 class="competition-title">PIMNAS</h3>
+                    <h3 class="competition-title"><?php echo htmlspecialchars($row['judul_kompetisi']); ?></h3>
                     <div class="competition-meta">
-                        <span class="meta-item">Nasional</span>
+                        <span class="meta-item">Tingkat: <?php echo htmlspecialchars($row['tingkat_kompetisi']); ?></span>
                         <span>|</span>
-                        <span class="meta-item">PKM-GFT</span>
+                        <span class="meta-item">Jenis: <?php echo htmlspecialchars($row['jenis_kompetisi']); ?></span>
                     </div>
                 </div>
-                <button class="validate-button" onclick="window.location.href='Validasi.html'">Validasi</button>
-            </div>
+                <button type="button" class="validate-button" onclick="window.location.href='Validasi.php?id=<?php echo $row['id_kompetisi']; ?>'">
+                    Validasi
+                </button>
 
-            <div class="competition-card">
-                <div class="competition-info">
-                    <h3 class="competition-title">PIMNAS</h3>
-                    <div class="competition-meta">
-                        <span class="meta-item">Nasional</span>
-                        <span>|</span>
-                        <span class="meta-item">PKM-GFT</span>
-                    </div>
-                </div>
-                <button class="validate-button">Validasi</button>
             </div>
-
-            <div class="competition-card">
-                <div class="competition-info">
-                    <h3 class="competition-title">PIMNAS</h3>
-                    <div class="competition-meta">
-                        <span class="meta-item">Nasional</span>
-                        <span>|</span>
-                        <span class="meta-item">PKM-GFT</span>
-                    </div>
-                </div>
-                <button class="validate-button">Validasi</button>
-            </div>
+        <?php endwhile; ?>
         </div>
     </div>
 </body>

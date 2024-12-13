@@ -3,7 +3,7 @@ session_start();
 require 'konek.php';  // Memasukkan file koneksi
 
 // Koneksi ke database
-$conn = connectToDatabase("DESKTOP-EJT421I\\DBMS2024", "PBL_DB");
+$conn = connectToDatabase("LAPTOP-OF3KH5J0\DBMS2024", "PBL_DB");
 
 if (!$conn) {
     // Jika koneksi gagal

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'konek.php';  // Memasukkan file koneksi
+require 'konek.php';// Memasukkan file koneksi
 
 // Koneksi ke database
 $conn = connectToDatabase("LAPTOP-OF3KH5J0\DBMS2024", "PBL_DB");
@@ -11,7 +11,7 @@ if (!$conn) {
 }
 
 // Query untuk mengambil data agenda
-$sql = "SELECT * FROM presma.infoLomba ";
+$sql = "SELECT * FROM presma.Kompetisi WHERE status = '0'";
 
 $result = sqlsrv_query($conn, $sql);  // Menjalankan query
 
@@ -21,5 +21,3 @@ if ($result === false) {
 }
 
 ?>
-
-

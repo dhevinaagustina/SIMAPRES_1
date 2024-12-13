@@ -229,7 +229,7 @@
             Beranda
         </a>
 
-        <a href="TambahAgenda.html" class="menu-item" id="tambahagenda" onclick="setActiveMenu('menu-tambah-agenda')">
+        <a href="TambahAgenda.php" class="menu-item" id="tambahagenda" onclick="setActiveMenu('menu-tambah-agenda')">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 12a8 8 0 0 0-8-8v8l5.657 5.657A7.95 7.95 0 0 0 20 12z" />
                 <path d="M12 4a8 8 0 0 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" />
@@ -237,7 +237,7 @@
             Tambah Agenda Kompetisi
         </a>
 
-        <a href="agendakomp.html" class="menu-item" id="menu-tambah-agenda" onclick="setActiveMenu('agenda')">
+        <a href="agendakomp.php" class="menu-item" id="menu-tambah-agenda" onclick="setActiveMenu('agenda')">
             <svg class="menu-icon" viewBox="0 0 24 24">
                 <path
                     d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
