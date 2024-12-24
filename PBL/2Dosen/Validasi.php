@@ -150,10 +150,6 @@ sqlsrv_close($conn);
                     <span id="nim"><?php echo htmlspecialchars($row['nim'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
                 <div>
-                    <label for="jurusan">Jurusan:</label>
-                    <span id="jurusan"><?php echo htmlspecialchars($row['jurusan'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
-                </div>
-                <div>
                     <label for="prodi">Program Studi:</label>
                     <span id="prodi"><?php echo htmlspecialchars($row['prodi'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
