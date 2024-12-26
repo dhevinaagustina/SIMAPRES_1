@@ -12,3 +12,9 @@ function connectToDatabase($servername, $dbname) {
         die("Connection failed: " . print_r(sqlsrv_errors(), true));
     } 
 
+        echo "Connection Established";
+    }
+    return $conn;
+}
+
+
