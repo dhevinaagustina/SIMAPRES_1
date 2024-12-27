@@ -3,7 +3,7 @@ session_start();
 require 'backend/konek.php';  // Memasukkan file koneksi
 
 // Koneksi ke database
-$conn = connectToDatabase("LAPTOP-OF3KH5J0\DBMS2024", "PBL_DB");
+$conn = connectToDatabase("NXST-planet\DBMS2022", "PBL_DB");
 
 if (!$conn) {
     // Jika koneksi gagal
@@ -185,7 +185,7 @@ if ($result === false) {
             Agenda Kompetisi
         </a>
 
-        <a href="rankpres.html" class="menu-item">
+        <a href="rankpres.php" class="menu-item">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#2D2669"><path d="M20 12a8 8 0 0 0-8-8v8l5.657 5.657A7.95 7.95 0 0 0 20 12z"/><path d="M12 4a8 8 0 0 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/></svg>
             Rangking Prestasi
         </a>
