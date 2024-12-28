@@ -59,10 +59,6 @@ unset($_SESSION['ranking_results']); // Hapus session setelah digunakan
             flex-grow: 1;
         }
 
-        .collapse-arrow {
-            color: white;
-            font-size: 1.5rem;
-        }
 
         .menu-item {
             display: flex;
@@ -191,7 +187,6 @@ unset($_SESSION['ranking_results']); // Hapus session setelah digunakan
         <div class="user-profile">
             <div class="user-avatar"></div>
             <span class="username">Username</span>
-            <span class="collapse-arrow">≪</span>
         </div>
         
         <a href="dashboard.php" class="menu-item">
