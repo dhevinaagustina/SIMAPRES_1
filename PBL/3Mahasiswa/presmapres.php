@@ -69,10 +69,18 @@ if ($result === false) {
             font-size: 1.1rem;
             flex-grow: 1;
         }
-
-        .collapse-arrow {
+ 
+        #logout-button {
+            background: #FF4C4C; 
             color: white;
-            font-size: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            transition: background 0.3s ease;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
         }
 
         .menu-item {
@@ -102,6 +110,19 @@ if ($result === false) {
 
         .page-header {
             margin-bottom: 32px;
+        }
+
+        .linkKompetisi {
+            color: white;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .linkPrestasi {
+            color: white;
+            font-weight: bold;
+            font-size: 22px;
+            text-shadow: 2px 2px 4px rgba(43, 35, 88, 0.7);
         }
 
         .page-title {
@@ -167,7 +188,6 @@ if ($result === false) {
         <div class="user-profile">
             <div class="user-avatar"></div>
             <span class="username">Username</span>
-            <span class="collapse-arrow">≪</span>
         </div>
         
         <a href="dashboard.php" class="menu-item">
@@ -189,15 +209,17 @@ if ($result === false) {
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#2D2669"><path d="M20 12a8 8 0 0 0-8-8v8l5.657 5.657A7.95 7.95 0 0 0 20 12z"/><path d="M12 4a8 8 0 0 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/></svg>
             Rangking Prestasi
         </a>
+
+        <a href="../0Loginpage/login.html" id="logout-button" class="menu-item hidden">Keluar</a>
     </div>
 
     <div class="main-content">
         <div class="page-header">
             <h1 class="page-title">Prestasi Mahasiswa</h1>
             <div class="page-nav">
-                <a href="presmakomp.php">Kompetisi</a>
+            <a href="presmakomp.php" class="linkKompetisi">Kompetisi</a>
                 <span>|</span>
-                <a href="presmapres.php">Prestasi</a>
+                <a href="presmapres.php" class="linkPrestasi">Prestasi</a>
             </div>
         </div>
 
