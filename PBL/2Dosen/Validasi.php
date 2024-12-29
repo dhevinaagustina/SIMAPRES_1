@@ -16,7 +16,19 @@ if (!$conn) {
 $row = null;
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM presma.Kompetisi WHERE id_kompetisi = ?";
+
+    // Query dengan JOIN untuk mendapatkan Program Studi
+    $sql = "
+        SELECT k.*, 
+               m.nama AS nama_mahasiswa, 
+               m.prodi AS program_studi, 
+               d.nama AS nama_dosen, 
+               d.nip AS nip_dosen
+        FROM presma.Kompetisi k
+        LEFT JOIN presma.Mahasiswa m ON k.nim = m.nim
+        LEFT JOIN presma.Dosen d ON k.nip = d.nip
+        WHERE k.id_kompetisi = ?
+    ";
     $params = array($id);
     $stmt = sqlsrv_prepare($conn, $sql, $params);
 
@@ -70,10 +82,12 @@ sqlsrv_close($conn);
         </div>
         
         <a href="dashboarddosen.php" class="menu-item">
-            <!-- Ikon dan teks menu -->
+            <svg class="menu-icon" viewBox="0 0 24 24">
+                <path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z"/>
+            </svg>
             Beranda
         </a>
-        <a href="validasipres1.html" class="menu-item">
+        <a href="validasipres1.php" class="menu-item">
             Validasi & Daftar Prestasi
         </a>
         <a href="agendakompdosen.php" class="menu-item">
@@ -131,11 +145,11 @@ sqlsrv_close($conn);
                 <h3>Dosen Pembimbing</h3>
                 <div>
                     <label for="nama">Nama:</label>
-                    <span id="nama"><?php echo htmlspecialchars($row['dosen_pembimbing'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
+                    <span id="nama"><?php echo htmlspecialchars($row['nama_dosen'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
                 <div>
                     <label for="nip">NIP:</label>
-                    <span id="nip"><?php echo htmlspecialchars($row['nip'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
+                    <span id="nip"><?php echo htmlspecialchars($row['nip_dosen'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
             </div>
 
@@ -143,15 +157,15 @@ sqlsrv_close($conn);
                 <h3>Mahasiswa</h3>
                 <div>
                     <label for="nama">Nama:</label>
-                    <span id="nama"><?php echo htmlspecialchars($row['mahasiswa'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
+                    <span id="nama"><?php echo htmlspecialchars($row['nama_mahasiswa'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
                 <div>
                     <label for="nim">NIM:</label>
                     <span id="nim"><?php echo htmlspecialchars($row['nim'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
                 <div>
-                    <label for="prodi">Program Studi:</label>
-                    <span id="prodi"><?php echo htmlspecialchars($row['prodi'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
+                    <label for="program_studi">Program Studi:</label>
+                    <span id="prodi"><?php echo htmlspecialchars($row['program_studi'] ?? 'N/A', ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
             </div>
 
@@ -182,7 +196,7 @@ sqlsrv_close($conn);
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
-        " type="submit" name="validate" class="validate-btn">Validasi</button>
+            " type="submit" name="validate" class="validate-btn">Validasi</button>
             </form>
         </div>
     </div>
